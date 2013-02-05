@@ -5,13 +5,13 @@ def initialize
   @commands = Hash.new
 end
 
-def add_command(command, url)
-  @commands[command] = url
+def commands= commands
+  @commands = commands
 end
 
 
 def resolve_command(command, argument_line)
-  encoded_line = argument_line.sub(" ", "+")
+  encoded_line = argument_line.gsub(" ", "+")
   @commands[command].sub("%s", encoded_line)
 end
 
