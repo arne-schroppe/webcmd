@@ -4,11 +4,11 @@ $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__))) unless $LOAD_PATH.i
 
 require 'webrick'
 require 'json'
-require 'Commands'
-require 'Request'
+require 'commands'
+require 'request'
 
 commands = Commands.new
-expanded_path = File.expand_path("~/.localnub.json")
+expanded_path = File.expand_path("~/.paamuk.json")
 
 server = WEBrick::HTTPServer.new :BindAddress => "127.0.0.1",
   :Port => 8000,

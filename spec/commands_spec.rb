@@ -1,4 +1,4 @@
-require 'Commands'
+require 'commands'
 require 'rubygems'
 require 'rspec'
 
