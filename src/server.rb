@@ -23,7 +23,7 @@ server.mount_proc '/' do |req, res|
 
   if query == "KILLSERVER"
     res.body = "goodbye"
-    server.stop
+    server.shutdown
   elsif not query.nil?
     command_file_content = IO.read(expanded_path)
     stored_commands = JSON.parse(command_file_content)
