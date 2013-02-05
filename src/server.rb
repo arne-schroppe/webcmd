@@ -27,7 +27,7 @@ server.mount_proc '/' do |req, res|
 
     request = Request.new query.gsub("+", " ")
     url = commands.resolve_command(request.command, request.arguments)
-    res.set_redirect(WEBrick::HTTPStatus::TemporaryRedirect, url)
+    res.set_redirect(WEBrick::HTTPStatus::MovedPermanently, url)
   end
 end
 
