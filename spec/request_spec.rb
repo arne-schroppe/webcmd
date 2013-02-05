@@ -1,4 +1,4 @@
-require 'request'
+require 'src/request'
 require 'rubygems'
 require 'rspec'
 
