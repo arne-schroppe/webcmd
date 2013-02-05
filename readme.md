@@ -20,4 +20,6 @@ Then start "server.rb". Add a new search engine in your browser, with the url
 `http://localhost:8000/?q=%s` (the exact syntax in your browser might be different,
 this is an example for Google Chrome)
 
+Now you can use for example "g ewok language" as a shortcut for a google search.
+
 You can stop the server by using the "KILLSERVER" command
