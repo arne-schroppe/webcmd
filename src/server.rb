@@ -20,7 +20,11 @@ trap('INT') { server.shutdown }
 server.mount_proc '/' do |req, res|
   query_hash = req.query()
   query = query_hash['q']
-  if not query.nil?
+
+  if query == "KILLSERVER"
+    res.body = "goodbye"
+    server.stop
+  elsif not query.nil?
     command_file_content = IO.read(expanded_path)
     stored_commands = JSON.parse(command_file_content)
     commands.commands = stored_commands
@@ -31,4 +35,5 @@ server.mount_proc '/' do |req, res|
   end
 end
 
+WEBrick::Daemon.start()
 server.start
