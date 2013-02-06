@@ -21,5 +21,12 @@ describe Request do
     request.command.should eq "wp"
     request.arguments.should eq "Ada Lovelace"
   end
+
+  it "can handle commands without arguments" do
+    request = Request.new " c2 "
+
+    request.command.should eq "c2"
+    request.arguments.should eq ""
+  end
   
 end
