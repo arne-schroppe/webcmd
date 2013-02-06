@@ -1,3 +1,4 @@
+require 'cgi'
 
 class Commands
 
@@ -11,7 +12,8 @@ end
 
 
 def resolve_command(command, argument_line)
-  encoded_line = argument_line.gsub(" ", "+")
+  encoded_line = CGI::escape(argument_line)
+  encoded_line = encoded_line.gsub("%20", "+")
   @commands[command].sub("%s", encoded_line)
 end
 

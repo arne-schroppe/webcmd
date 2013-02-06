@@ -27,4 +27,9 @@ describe Commands do
     @commands.resolve_command("wp", "Centroidal Voronoi tessellation").should eq "http://en.wikipedia.com/?search=Centroidal+Voronoi+tessellation"
   end
 
+  it "encodes illegal characters" do
+    @commands.commands = { "am" => "http://www.amazon.com/s/?field-keywords=%s" }
+    @commands.resolve_command("am", '"smalltalk" ?/#^:').should eq "http://www.amazon.com/s/?field-keywords=%22smalltalk%22+%3F%2F%23%5E%3A"
+  end
+
 end
