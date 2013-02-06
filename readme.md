@@ -16,7 +16,7 @@ Create the file ~/.paamuk.json in your home directory with a content similar to 
       "twits": "https://twitter.com/#!/search/%s"
     }
 
-Then start "server.rb". Add a new search engine in your browser, with the url 
+Then start "paamuk.rb". Add a new search engine in your browser, with the url 
 `http://localhost:8000/?q=%s` (the exact syntax in your browser might be different,
 this is an example for Google Chrome)
 
