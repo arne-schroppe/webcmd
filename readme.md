@@ -22,4 +22,4 @@ this is an example for Google Chrome)
 
 Now you can use for example "g ewok language" as a shortcut for a google search.
 
-You can stop the server by using the "KILLSERVER" command
+You can stop the server by using the "paamuk:stop" command

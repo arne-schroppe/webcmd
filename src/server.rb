@@ -21,7 +21,7 @@ server.mount_proc '/' do |req, res|
   query_hash = req.query()
   query = query_hash['q']
 
-  if query == "KILLSERVER"
+  if query == "paamuk:stop"
     res.body = "goodbye"
     server.shutdown
   elsif not query.nil?
