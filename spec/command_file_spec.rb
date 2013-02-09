@@ -1,4 +1,4 @@
-require 'src/command_file'
+require_relative '../src/command_file'
 require 'json'
 
 

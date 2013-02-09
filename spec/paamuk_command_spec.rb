@@ -1,5 +1,5 @@
-require 'src/paamuk_command.rb'
-require 'src/request.rb'
+require_relative '../src/paamuk_command.rb'
+require_relative '../src/request.rb'
 
 
 describe PaamukCommand do

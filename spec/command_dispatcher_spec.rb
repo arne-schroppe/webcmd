@@ -1,5 +1,5 @@
 
-require 'src/command_dispatcher'
+require_relative '../src/command_dispatcher'
 
 describe CommandDispatcher do
 

@@ -1,5 +1,5 @@
-require 'src/user_command'
-require 'src/request'
+require_relative '../src/user_command'
+require_relative '../src/request'
 require 'rubygems'
 require 'rspec'
 require 'webrick'
