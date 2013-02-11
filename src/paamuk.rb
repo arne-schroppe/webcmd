@@ -27,15 +27,18 @@ server = WEBrick::HTTPServer.new :BindAddress => "127.0.0.1",
 
 command_dispatcher = CommandDispatcher.new
 expanded_path = File.expand_path("~/.paamuk.json")
-command_dispatcher.bind_command("user", UserCommand.new(CommandFile.new expanded_path))
+CommandFile.file_name = expanded_path
+command_dispatcher.bind_command("user", UserCommand.new)
 command_dispatcher.bind_command("paamuk", PaamukCommand.new(server))
 
 server.mount_proc '/' do |req, res|
   query_hash = req.query()
   query = query_hash['q']
 
-  request = Request.from_string query.gsub("+", " ")
-  command_dispatcher.dispatch(request, res)
+  if not query.nil?
+    request = Request.from_string query.gsub("+", " ")
+    command_dispatcher.dispatch(request, res)
+  end
 end
 
 

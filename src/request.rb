@@ -8,18 +8,20 @@ class Request
     namespace = "user"
 
     query = query_string.strip
-    namespace_separator_index = query.index(":")
+    namespace_part = /^\w+:/.match(query)
 
     remaining_query = query
-    if not namespace_separator_index.nil?
+    if not namespace_part.nil?
+      namespace_separator_index = namespace_part.end(0) - 1
       namespace = query[0 .. namespace_separator_index-1]
       remaining_query = query[namespace_separator_index+1 .. -1].strip
     end
 
-    first_space_index = remaining_query.index(" ")
-    if first_space_index.nil?
+    command_part = /^\w+ /.match(remaining_query)
+    if command_part.nil?
       command = remaining_query
     else
+      first_space_index = command_part.end(0) - 1
       command = remaining_query[0 .. first_space_index-1]
       arguments = remaining_query[first_space_index+1 .. -1].strip
     end

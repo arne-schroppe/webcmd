@@ -37,6 +37,14 @@ describe Request do
     request.namespace.should eq "paamuk"
   end
 
+  it "handles arguments containing colons" do
+    request = Request.from_string "addcommand g http://www.google.com"
+
+    request.command.should eq "addcommand"
+    request.arguments.should eq "g http://www.google.com"
+    request.namespace.should eq "user"
+  end
+
   it "uses 'user' as the default namespace" do
     request = Request.from_string "wp Alan Turing"
     request.namespace.should eq "user"
