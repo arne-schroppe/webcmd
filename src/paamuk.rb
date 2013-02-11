@@ -11,6 +11,8 @@ require 'command_file'
 require 'request'
 require 'trollop'
 
+#TODO
+#make it possible to start without a .paamuk.json, only with setcommand
 
 
 options = Trollop::options do
