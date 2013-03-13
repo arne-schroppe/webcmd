@@ -13,6 +13,7 @@ require 'trollop'
 
 #TODO
 #make it possible to start without a .paamuk.json, only with setcommand
+#make it possible to use the POST-method
 
 
 options = Trollop::options do
