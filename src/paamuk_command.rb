@@ -11,6 +11,8 @@ class PaamukCommand
       self.stop response
     elsif request.command == "setcommand" or request.command == "setc"
       self.setcommand request, response
+    elsif request.command == "list"
+      self.list response
     end
   end
 
@@ -27,5 +29,11 @@ class PaamukCommand
     response.body = "Setting '#{new_command}' to '#{new_command_url}'"
   end
 
-
+  def list(response)
+    commands = []
+    CommandFile.commands.each do |key, value|
+      commands.push("\n#{key}\t\t#{value}")
+    end
+    response.body = "Known commands:" + commands.sort().join("")
+  end
 end
