@@ -45,4 +45,11 @@ describe UserCommand do
     @user_command.resolve(request, @response)
   end
 
+  it "returns an error message if the command can't be found" do
+    CommandFile.stub(:commands).and_return({})
+    request = Request.new("", "invalid", "")
+    @response.should_receive(:body=).with("Unknown command: 'invalid'. Try 'server:list' or 'server:help'.")
+    @user_command.resolve(request, @response)
+  end
+
 end
