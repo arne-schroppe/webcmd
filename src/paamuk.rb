@@ -18,6 +18,7 @@ require 'trollop'
 #TODO
 #make it possible to start without a .paamuk.json, only with setcommand
 #make it possible to use the POST-method
+#use backticks in arguments to run system commands (is that safe? investigate)
 
 
 options = Trollop::options do
@@ -36,7 +37,7 @@ command_dispatcher = CommandDispatcher.new
 expanded_path = File.expand_path("~/.paamuk.json")
 CommandFile.file_name = expanded_path
 command_dispatcher.bind_command("user", UserCommand.new)
-command_dispatcher.bind_command("paamuk", PaamukCommand.new(server))
+command_dispatcher.bind_command("server", PaamukCommand.new(server))
 
 server.mount_proc '/' do |req, res|
   query_hash = req.query()
