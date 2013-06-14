@@ -1,9 +1,9 @@
 require_relative '../src/command_file.rb'
-require_relative '../src/paamuk_command.rb'
+require_relative '../src/server_command.rb'
 require_relative '../src/request.rb'
 
 
-describe PaamukCommand do
+describe ServerCommand do
 
   before do
     @server = double("server")
@@ -24,7 +24,7 @@ describe PaamukCommand do
     response.should_receive(:body=)
     CommandFile.should_receive(:set_command).with("g", "http://www.google.com/q=%s")
 
-    request = Request.new("", "setcommand", "g http://www.google.com/q=%s")
+    request = Request.new("", "set", "g http://www.google.com/q=%s")
     @command.resolve(request, response)
   end
 
@@ -40,6 +40,15 @@ describe PaamukCommand do
     )
 
     request = Request.new("", "list", "")
+    @command.resolve(request, response)
+  end
+
+  it "provides a help command that lists all known server commands" do
+    response = double("response")
+    #we currently don't check what the text is exactly, just that it exists
+    response.should_receive(:body=)
+
+    request = Request.new("", "help", "")
     @command.resolve(request, response)
   end
 

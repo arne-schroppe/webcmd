@@ -7,7 +7,7 @@ require 'bundler/setup'
 
 require 'webrick'
 require 'user_command'
-require 'paamuk_command'
+require 'server_command'
 require 'command_dispatcher'
 
 require 'command_file'
@@ -37,7 +37,7 @@ command_dispatcher = CommandDispatcher.new
 expanded_path = File.expand_path("~/.paamuk.json")
 CommandFile.file_name = expanded_path
 command_dispatcher.bind_command("user", UserCommand.new)
-command_dispatcher.bind_command("server", PaamukCommand.new(server))
+command_dispatcher.bind_command("server", ServerCommand.new(server))
 
 server.mount_proc '/' do |req, res|
   query_hash = req.query()
