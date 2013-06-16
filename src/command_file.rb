@@ -8,8 +8,11 @@ module CommandFile
   end
 
   def self.commands
-    command_file_content = IO.read(@file_name)
-    stored_commands = JSON.parse(command_file_content)
+    stored_commands = Hash.new
+    if File.exist? @file_name then
+      command_file_content = IO.read(@file_name)
+      stored_commands = JSON.parse(command_file_content)
+    end
     stored_commands
   end
 
@@ -18,7 +21,7 @@ module CommandFile
     commands[command] = url
 
     command_file_content = JSON.pretty_generate(commands)
-    IO.write(@file_name, command_file_content, {"mode" => "w"})
+    IO.write(@file_name, command_file_content, {"mode" => "w+"})
   end
 
 
