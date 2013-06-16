@@ -16,10 +16,11 @@ Create the file ~/.paamuk.json in your home directory with a content similar to 
       "twits": "https://twitter.com/#!/search/%s"
     }
 
-Then start "paamuk.rb". Add a new search engine in your browser, with the url 
-`http://localhost:8000/?q=%s` (the exact syntax in your browser might be different,
-this is an example for Google Chrome)
+Then start "paamuk.rb". Add a new search engine in your browser, with the url
+`http://localhost:8000/?q=%s` (the exact syntax might be different, this is
+an example for Google Chrome)
 
-Now you can use for example "g ewok language" as a shortcut for a google search.
+Now you can use e.g. "g ewok language" as a shortcut for a google search.
 
-You can stop the server by using the "paamuk:stop" command
+You can stop the server by using the `server:stop` command. Type `server:help`
+to see all available commands.
