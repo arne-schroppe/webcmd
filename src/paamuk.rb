@@ -44,7 +44,7 @@ server.mount_proc '/' do |req, res|
   query = query_hash['q']
 
   if not query.nil?
-    request = Request.from_string query.gsub("+", " ")
+    request = Request.from_string query
     command_dispatcher.dispatch(request, res)
   end
 end

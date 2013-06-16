@@ -24,7 +24,7 @@ describe ServerCommand do
     response.should_receive(:body=)
     CommandFile.should_receive(:set_command).with("g", "http://www.google.com/q=%s")
 
-    request = Request.new("", "set", "g http://www.google.com/q=%s")
+    request = Request.new("", "setcommand", "g http://www.google.com/q=%s")
     @command.resolve(request, response)
   end
 

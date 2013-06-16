@@ -27,7 +27,7 @@ class ServerCommand
     @server.shutdown
   end
 
-  define_command :set do |request, response|
+  define_command :setcommand do |request, response|
     added_command = Request.from_string request.arguments
     new_command = added_command.command
     new_command_url = added_command.arguments
