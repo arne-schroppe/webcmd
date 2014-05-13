@@ -4,6 +4,7 @@ require_relative 'command_file'
 
 class UserCommand
 
+DEFAULT_COMMAND = "https://www.google.com/search?q=%s".freeze
 
 def resolve(request, response)
   encoded_line = CGI::escape(request.arguments)
@@ -11,7 +12,8 @@ def resolve(request, response)
   commands = CommandFile.commands
   command = commands[request.command]
   if command.nil?
-    response.body = "Unknown command: '#{request.command}'. Try 'server:list' or 'server:help'."
+    default_url = DEFAULT_COMMAND.sub("%s", request.command + "+" + encoded_line)
+    response.set_redirect(WEBrick::HTTPStatus::TemporaryRedirect, default_url)
     return
   end
   url = command.sub("%s", encoded_line)

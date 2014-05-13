@@ -35,7 +35,7 @@ describe UserCommand do
     CommandFile.stub(:commands).and_return({ "wp" => "http://en.wikipedia.com/?search=%s" })
     request = Request.new("", "wp", "Centroidal Voronoi tessellation")
     @response.should_receive(:set_redirect).with(@redirection, "http://en.wikipedia.com/?search=Centroidal+Voronoi+tessellation")
-    @user_command.resolve(request, @response) 
+    @user_command.resolve(request, @response)
   end
 
   it "encodes characters" do
@@ -45,10 +45,10 @@ describe UserCommand do
     @user_command.resolve(request, @response)
   end
 
-  it "returns an error message if the command can't be found" do
+  it "defaults to google if the command can't be found" do
     CommandFile.stub(:commands).and_return({})
-    request = Request.new("", "invalid", "")
-    @response.should_receive(:body=).with("Unknown command: 'invalid'. Try 'server:list' or 'server:help'.")
+    request = Request.new("", "invalid", "Centroidal Voronoi tessellation")
+    @response.should_receive(:set_redirect).with(@redirection, "https://www.google.com/search?q=invalid+Centroidal+Voronoi+tessellation")
     @user_command.resolve(request, @response)
   end
 
