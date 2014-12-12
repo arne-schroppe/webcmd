@@ -21,7 +21,9 @@ module CommandFile
     commands[command] = url
 
     command_file_content = JSON.pretty_generate(commands)
-    IO.write(@file_name, command_file_content, {"mode" => "w+"})
+    File.open(@file_name, "w+") do |file|
+      file.write(command_file_content)
+    end
   end
 
 
