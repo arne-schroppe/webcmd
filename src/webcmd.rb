@@ -16,7 +16,7 @@ require 'request'
 require 'trollop'
 
 #TODO
-#make it possible to start without a .paamuk.json, only with setcommand
+#make it possible to start without a .webcmd.json, only with setcommand
 #make it possible to use the POST-method
 #use backticks in arguments to run system commands (is that safe? investigate)
 
@@ -34,7 +34,7 @@ server = WEBrick::HTTPServer.new :BindAddress => "127.0.0.1",
 
 
 command_dispatcher = CommandDispatcher.new
-expanded_path = File.expand_path("~/.paamuk.json")
+expanded_path = File.expand_path("~/.webcmd.json")
 CommandFile.file_name = expanded_path
 command_dispatcher.bind_command("user", UserCommand.new)
 command_dispatcher.bind_command("server", ServerCommand.new(server))

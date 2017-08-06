@@ -30,11 +30,11 @@ describe Request do
   end
 
   it "resolves the namespace of an argument" do
-    request = Request.from_string "paamuk:stop argument1 argument2"
+    request = Request.from_string "server:stop argument1 argument2"
 
     request.command.should eq "stop"
     request.arguments.should eq "argument1 argument2"
-    request.namespace.should eq "paamuk"
+    request.namespace.should eq "server"
   end
 
   it "handles arguments containing colons" do
